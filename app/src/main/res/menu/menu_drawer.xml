@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_top_stories"
+            android:icon="@drawable/baseline_star_rate_black_24"
+            android:title="@string/top_stories" />
+        <item
+            android:id="@+id/nav_most_popular"
+            android:icon="@drawable/baseline_favorite_black_24"
+            android:title="@string/most_popular" />
+        <item
+            android:id="@+id/nav_arts"
+            android:icon="@drawable/baseline_format_paint_black_24"
+            android:title="@string/art_and_design" />
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/baseline_search_black_24"
+            android:title="Search..." />
+    </group>
+
+
+    <item android:title="Settings">
+        <group android:checkableBehavior="single">
+            <menu>
+                <item
+                    android:id="@+id/nav_notifications"
+                    android:icon="@drawable/baseline_notifications_black_24"
+                    android:title="Notifications" />
+                <item
+                    android:id="@+id/nav_help"
+                    android:icon="@drawable/baseline_help_black_24"
+                    android:title="Help" />
+                <item
+                    android:id="@+id/nav_about"
+                    android:icon="@drawable/baseline_info_black_24"
+                    android:title="About" />
+            </menu>
+
+        </group>
+    </item>
+
+</menu>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">MyNews</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="webviewToolbarTitle">Article</string>
+    <string name="query_term_empty">Query term can\'t be empty</string>
+    <string name="checkbox_selected">One checkbox must be selected</string>
+    <string name="top_stories">Top Stories</string>
+    <string name="most_popular">Most Popular</string>
+    <string name="art_and_design">Art &amp; Design</string>
+    <string name="search">Search</string>
+    <string name="begin_date_hint">Begin date</string>
+    <string name="end_date_hint">End date</string>
+    <string name="arts">Arts</string>
+    <string name="business">Business</string>
+    <string name="entrepreneurs">Entrepreneurs</string>
+    <string name="politics">Politics</string>
+    <string name="sport">Sport</string>
+    <string name="travel">Travel</string>
+    <string name="enable_notification">Enable notification</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="notifications">Notifications</string>
+    <string name="helpMenu">Help</string>
+    <string name="aboutMenu">About</string>
+    <string name="have_a_good_news">We have good news for you</string>
+    <string name="help_txt">This application was created to send articles from the New York Times that may interest you.</string>
+    <string name="about_txt">This application was created as part of an OpenClassrooms learning project.</string>
+</resources>
