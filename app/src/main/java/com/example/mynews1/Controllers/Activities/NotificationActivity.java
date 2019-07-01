@@ -121,6 +121,7 @@ public class NotificationActivity extends AppCompatActivity {
      */
     private void configureToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.notifications_toolbar_title);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)

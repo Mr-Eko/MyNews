@@ -75,6 +75,7 @@ public class SearchActivity extends AppCompatActivity {
      */
     private void configureToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(getString(R.string.search_toolbar_title));
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)

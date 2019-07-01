@@ -41,8 +41,8 @@ public abstract class BaseFragment extends Fragment {
     @BindView(R.id.base_swipe_container)
     SwipeRefreshLayout swipeRefreshLayout;
 
-    protected List<NYTimesNews> mResultList;
-    protected ArticlesAdapter mAdapter;
+    private List<NYTimesNews> mResultList;
+    private ArticlesAdapter mAdapter;
     protected Disposable mDisposable;
 
 
@@ -65,7 +65,7 @@ public abstract class BaseFragment extends Fragment {
         return view;
     }
 
-    protected void configureRecyclerView() {
+    private void configureRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),layoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
@@ -160,7 +160,6 @@ public abstract class BaseFragment extends Fragment {
             // Create Thumbnail
 
             news.setImageURL(mResult.getMedia().get(0).getMediaMetadata().get(0).getUrl());
-
 
             nyTimesNewsList.add(news);
         }

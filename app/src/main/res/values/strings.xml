@@ -27,4 +27,8 @@
     <string name="have_a_good_news">We have good news for you</string>
     <string name="help_txt">This application was created to send articles from the New York Times that may interest you.</string>
     <string name="about_txt">This application was created as part of an OpenClassrooms learning project.</string>
+    <string name="search_toolbar_title">Search Articles</string>
+    <string name="search_result_toolbar_title">Search Results</string>
+    <string name="display_articles_toolbar_title">Article</string>
+    <string name="notifications_toolbar_title">Notifications</string>
 </resources>

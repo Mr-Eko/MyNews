@@ -35,13 +35,12 @@ public class DisplayArticleActivity extends AppCompatActivity {
     }
 
     private void configureToolbar() {
-        //Get the toolbar (Serialise)
         Toolbar toolbar = findViewById(R.id.toolbar);
-        //Set the toolbar
+        toolbar.setTitle(R.string.display_articles_toolbar_title);
         setSupportActionBar(toolbar);
-        // Get a support ActionBar corresponding to this toolbar
-        ActionBar ab = getSupportActionBar();
-        // Enable the Up button
-        ab.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 }
