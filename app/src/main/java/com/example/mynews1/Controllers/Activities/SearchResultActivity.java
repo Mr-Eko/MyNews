@@ -1,6 +1,10 @@
 package com.example.mynews1.Controllers.Activities;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.mynews1.Models.ArticleSearch;
 import com.example.mynews1.Models.NYTimesNews;
@@ -18,6 +23,7 @@ import com.example.mynews1.Utils.ItemClickSupport;
 import com.example.mynews1.Utils.NyTimesApiStreams;
 import com.example.mynews1.Utils.Utils;
 import com.example.mynews1.Views.Adapters.ArticlesAdapter;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -48,12 +54,14 @@ public class SearchResultActivity extends AppCompatActivity {
     private Disposable mDisposable;
     private List<NYTimesNews> nyTimesNewsList = new ArrayList<>();
     private ArticlesAdapter mArticleAdapter;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
         ButterKnife.bind(this);
+        mContext = this;
         configureToolBar();
         configureSwipeRefreshLayout();
         configureRecyclerView();
@@ -130,9 +138,13 @@ public class SearchResultActivity extends AppCompatActivity {
                 .subscribeWith(new DisposableObserver<ArticleSearch>() {
                     @Override
                     public void onNext(ArticleSearch article) {
+                        if (article.getResponse().getDocs().size() != 0) {
                             mSearchResultSwipeLayout.setRefreshing(false);
                             mArticleAdapter.notifyDataSetChanged();
                             createListArticleSearch(nyTimesNewsList, article);
+                        } else {
+                            displayAlertDialogIfNoResult();
+                        }
                     }
 
                     @Override
@@ -144,6 +156,29 @@ public class SearchResultActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    /**
+     * Displays a MaterialAlertDialog if there is no results matched the user's research
+     */
+    private void displayAlertDialogIfNoResult() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setTitle("Sorry");
+        builder.setMessage(getString(R.string.no_result_search));
+        builder.setCancelable(true);
+
+        builder.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        onBackPressed();
+                    }
+                });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
 
     // Create a list of NYTimesNews with articles from Most Popular API
     private void createListArticleSearch(List<NYTimesNews> nyTimesNewsList, ArticleSearch articleSearch) {

@@ -31,4 +31,5 @@
     <string name="search_result_toolbar_title">Search Results</string>
     <string name="display_articles_toolbar_title">Article</string>
     <string name="notifications_toolbar_title">Notifications</string>
+    <string name="no_result_search">There is no news matched your search. Please, modify your search and try again</string>
 </resources>

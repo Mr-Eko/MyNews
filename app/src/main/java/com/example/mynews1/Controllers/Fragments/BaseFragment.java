@@ -41,8 +41,8 @@ public abstract class BaseFragment extends Fragment {
     @BindView(R.id.base_swipe_container)
     SwipeRefreshLayout swipeRefreshLayout;
 
-    private List<NYTimesNews> mResultList;
-    private ArticlesAdapter mAdapter;
+    protected List<NYTimesNews> mResultList;
+    protected ArticlesAdapter mAdapter;
     protected Disposable mDisposable;
 
 
@@ -78,7 +78,7 @@ public abstract class BaseFragment extends Fragment {
 
 
     //    Configure item click on RecyclerView
-    private void configureOnClickRecyclerView(){
+    protected void configureOnClickRecyclerView(){
         ItemClickSupport.addTo(mRecyclerView, R.id.item_layout)
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
@@ -96,7 +96,7 @@ public abstract class BaseFragment extends Fragment {
 
 
     //    Configure the SwipeRefreshLayout
-    private void configureSwipeRefreshLayout(){
+    protected void configureSwipeRefreshLayout(){
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
