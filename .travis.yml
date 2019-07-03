@@ -22,3 +22,5 @@ before_script:
     - emulator -avd test -no-window &
     - android-wait-for-emulator
     - ./gradlew connectedCheck --stacktrace
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
