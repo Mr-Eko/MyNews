@@ -24,7 +24,7 @@ public class Utils {
         return outputFormat.format(mDate);
     }
 
-    public static String convertDateForDisplayMostPopular(String date){
+    public static String convertDateForDisplayBis(String date){
 
         // Format Date "yyyy-MM-dd"
         SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);

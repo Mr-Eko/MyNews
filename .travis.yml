@@ -18,15 +18,15 @@ android:
     - sys-img-armeabi-v7a-android-$EMULATOR_API_LEVEL
 
     before_install:
-        - yes | sdkmanager "platforms;android-28"
+      - yes | sdkmanager "platforms;android-28"
 
     before_script:
-        - chmod +x gradlew
-        - ./gradlew build jacocoTestReport assembleAndroidTest
-        - echo no | android create avd --force -n test -t android-$EMULATOR_API_LEVEL --abi $ANDROID_ABI
-        - emulator -avd test -no-window &
-        - android-wait-for-emulator
-        - ./gradlew connectedCheck --stacktrace
+      - chmod +x gradlew
+      - ./gradlew build jacocoTestReport assembleAndroidTest
+      - echo no | android create avd --force -n test -t android-$EMULATOR_API_LEVEL --abi $ANDROID_ABI
+      - emulator -avd test -no-window &
+      - android-wait-for-emulator
+      - ./gradlew connectedCheck --stacktrace
 
     after_success:
-        - bash <(curl -s https://codecov.io/bash)
+      - bash <(curl -s https://codecov.io/bash)

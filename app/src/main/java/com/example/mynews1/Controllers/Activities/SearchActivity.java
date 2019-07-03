@@ -6,6 +6,9 @@ import android.content.Intent;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
@@ -60,6 +63,7 @@ public class SearchActivity extends AppCompatActivity {
     private String mBeginQuery;
     private String mEndQuery;
     private int mNbCheckedBoxes;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,28 +122,35 @@ public class SearchActivity extends AppCompatActivity {
      *
      * @param tag A value to set the text in the correct EditText
      */
-    private void displayDatePicker(final int tag) {
-        Calendar calendar = Calendar.getInstance();
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int month = calendar.get(Calendar.MONTH);
-        int year = calendar.get(Calendar.YEAR);
+
+    private void displayDatePicker (final int tag) {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
         int style;
-    style = R.style.Theme_AppCompat_DayNight_Dialog;
-        DatePickerDialog dialog = new DatePickerDialog(this, style, new DatePickerDialog.OnDateSetListener() {
+
+        style = R.style.Theme_AppCompat_DayNight_Dialog;
+        DatePickerDialog dialog = new DatePickerDialog(this,style,mDateSetListener, year, month, day);
+        dialog.show();
+
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                String date = dayOfMonth + "/" + (month + 1) + "/" + year;
+                month = month + 1;
+                String date = year + "-" + month + "-" + dayOfMonth;
                 switch (tag) {
                     case 0:
-                        mBeginDate.setText(Utils.convertDateForDisplay(date));
+                        mBeginDate.setText(date);
                         break;
+
                     case 1:
-                        mEndDate.setText(Utils.convertDateForDisplay(date));
+                        mEndDate.setText(date);
                         break;
                 }
+
             }
-        }, year, month, day);
-        dialog.show();
+        };
     }
 
     /**

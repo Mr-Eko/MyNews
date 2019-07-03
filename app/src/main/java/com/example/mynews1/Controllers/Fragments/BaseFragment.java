@@ -154,7 +154,7 @@ public abstract class BaseFragment extends Fragment {
             news.setUrl(mResult.getUrl());
 
             // Date Format
-            String outputText = Utils.convertDateForDisplayMostPopular(mResult.getPublishedDate());
+            String outputText = Utils.convertDateForDisplayBis(mResult.getPublishedDate());
             news.setPublishedDate(outputText);
 
             // Create Thumbnail
