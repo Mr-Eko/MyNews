@@ -13,3 +13,5 @@ android:
     - android-$EMULATOR_API_LEVEL
     - extra-android-m2repository
     - sys-img-armeabi-v7a-android-$EMULATOR_API_LEVEL
+before_install:
+    - yes | sdkmanager "platforms;android-28"
