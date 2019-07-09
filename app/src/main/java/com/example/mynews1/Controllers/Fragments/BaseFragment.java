@@ -112,8 +112,10 @@ public abstract class BaseFragment extends Fragment {
 
     // Create a list of NYTimesNews with articles from TopStories API
     protected void createListTopStories(List<NYTimesNews> nyTimesNewsList, TopStories article) {
+
         mAdapter.clearNews();
 
+        // for each mResult object of collection article.getResults then ...
         for (TopStories.Result mResult : article.getResults()){
 
             // Create a news
@@ -134,7 +136,6 @@ public abstract class BaseFragment extends Fragment {
             }
 
             nyTimesNewsList.add(news);
-
         }
     }
 
@@ -158,8 +159,10 @@ public abstract class BaseFragment extends Fragment {
             news.setPublishedDate(outputText);
 
             // Create Thumbnail
+            if (mResult.getMedia().size() != 0){
+                news.setImageURL(mResult.getMedia().get(0).getMediaMetadata().get(0).getUrl());
+            }
 
-            news.setImageURL(mResult.getMedia().get(0).getMediaMetadata().get(0).getUrl());
 
             nyTimesNewsList.add(news);
         }
