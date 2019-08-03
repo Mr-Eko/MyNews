@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -149,6 +151,8 @@ public class SearchResultActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
+                        String msgError = e.getMessage();
+                        Log.e ("MSGERROR", msgError);
                     }
 
                     @Override
@@ -216,7 +220,7 @@ public class SearchResultActivity extends AppCompatActivity {
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Intent intent = new Intent(SearchResultActivity.this,DisplayArticleActivity.class);
                         intent.putExtra(URL,mArticleAdapter.getURL(position));
-                        intent.putExtra(ID,Utils.convertTitleToId(mArticleAdapter.getTitle(position)));
+                        intent.putExtra(ID,Utils.convertTitle(mArticleAdapter.getTitle(position)));
                         startActivity(intent);
                     }
                 });

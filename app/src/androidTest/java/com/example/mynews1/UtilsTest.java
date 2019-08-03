@@ -39,9 +39,9 @@ public class UtilsTest {
     @Test
     public void convertTitleToIdTest(){
         String initialtitle = "Trump Administration Could Blacklist China's Hikvision, a Surveillance Firm";
-        assertEquals("Trump Administration", Utils.convertTitleToId(initialtitle));
+        assertEquals("Trump Administration", Utils.convertTitle(initialtitle));
         initialtitle = "Trump Administration";
-        assertEquals("Trump Administration",Utils.convertTitleToId(initialtitle));
+        assertEquals("Trump Administration",Utils.convertTitle(initialtitle));
     }
 
     @Test

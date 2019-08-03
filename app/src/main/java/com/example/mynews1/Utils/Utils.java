@@ -70,8 +70,8 @@ public class Utils {
      */
     public static String convertDateForQuery(String date) {
         // Format Date "yyyy-MM-dd'T'HH:mm:ss"
-        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
-        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US);
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyyMMdd", Locale.FRANCE);
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
 
         Date mDate = null;
 
@@ -83,9 +83,10 @@ public class Utils {
         return outputFormat.format(mDate);
     }
 
-    public static String convertTitleToId(String initialtitle) {
+    public static String convertTitle(String initialtitle) {
         if (initialtitle.length() >= 20) {
-            String substring = initialtitle.substring(0, 20);
+            String substring;
+            substring = initialtitle.substring(0, 20);
             return substring;
         } else
             return initialtitle;
